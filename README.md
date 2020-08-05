@@ -1,21 +1,11 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/bbf28a84-4bdb-407b-a2fa-32628d27fa3d/deploy-status)](https://app.netlify.com/sites/eleventy-netlify-boilerplate/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8be578ea-3111-4528-a98f-5b19b4c1ab7e/deploy-status)](https://app.netlify.com/sites/documentor/deploys)
 
-# Eleventy Netlify Boilerplate
+# Documentor
 
-## What is it?
-
-A simple template for building a fast, pre-generated HTML website using the [Eleventy](https://www.11ty.io/) static site generator. With [Netlify CMS](https://www.netlifycms.org/) baked-in, ready to deploy to [Netlify](https://www.netlify.com) in a couple of clicks.
-
-Use it as a starter for your own JAMstack projects, or as an easy way to get started building websites with Eleventy.
-
-Based on the [Eleventy Base Blog](https://github.com/11ty/eleventy-base-blog) repo (see there for additional info on Eleventy usage).
-
-🔥 **This project is featured on Netlify's official [template showcase](https://templates.netlify.com/template/eleventy-netlify-boilerplate/)** 🔥
-
-## [Demo Site](https://eleventy-netlify-boilerplate.netlify.app/)
+## [Prod Site](https://documentor.netlify.app/)
+## [Based on Site](https://eleventy-netlify-boilerplate.netlify.app/)
 
 ## Features
-
 * NEW: Added basic support for post authors, using a simple folder collection
 * Uses the official [Eleventy Navigation](https://www.11ty.dev/docs/plugins/navigation/) plugin to build menus
 * Sample pages and a blog with tag support
@@ -29,22 +19,8 @@ Based on the [Eleventy Base Blog](https://github.com/11ty/eleventy-base-blog) re
 * 100% Javascript framework free
 * Continuous Deployment workflow via Netlify
 
-## Want to try it out now?
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/danurbanowicz/eleventy-netlify-boilerplate&stack=cms)
-
-Clicking the button above will deploy a copy of the demo website to your Netlify
-account (you can create an account during this process if you don't have one)
-and everything needed for running the CMS:
-
-* A new repository in your GitHub account with the code
-* Full Continuous Deployment to Netlify's global CDN network
-* Control users and access with Netlify Identity
-* Manage content with Netlify CMS
-* Process form data with Netlify Forms
 
 ### Setup authentication
-
 After deploying this project, Netlify Identity will add you as a CMS user and
 will email you an invite. It is not necessary to accept this invite if you wish
 to use an
@@ -61,7 +37,6 @@ list, and you should then be logged into your CMS. Cool huh?
 Now you're all set, and you can start editing content!
 
 ## Gotchas
-
 If you change the repo that was created at deploy time from public to private, you'll need to regenerate your token,
 as the token generated using the deploy to Netlify button can only access public repositories. To
 regenerate your token, head to "Settings" in your Netlify site dashboard, go to the "Identity"

@@ -1,23 +1,31 @@
 <!doctype html>
-<html {% if section %} data-current="{{ section }}"{% endif %} lang="en">
+<html {% if section %} data-current="{{ section }}"{% endif %} lang="dk">
+<head>
+  <meta charset="utf-8">
+  <link rel="dns-prefetch" href="https://identity.netlify.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title or renderData.title or metadata.title }}</title>
+  <script async src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  {% set css %}
+    {% include "assets/css/app.css" %}
+  {% endset %}
+  <style>{{ css | cssmin | safe }}</style>
+  {% set js %}
+    {% include "assets/js/app.js" %}
+  {% endset %}
+  <script>{{ js | jsmin | safe }}</script>
+</head>
 
-	{% include "components/head.njk" %}
+<body>
+	<header>
+		<h2><a href="{{ '/' | url }}">{{ metadata.title }}</a></h2>
+		{% include "components/nav.njk" %}
+	</header>
 
-	<body>
+	<main>
+		{{ layoutContent | safe }}
+	</main>
 
-		<header>
-			<em>
-				<a href="{{ '/' | url }}">{{ metadata.title }}</a>
-			</em>
-			{% include "components/nav.njk" %}
-		</header>
-
-		<main>
-			{{ layoutContent | safe }}
-		</main>
-
-		{% include "components/footer.njk" %}
-
-	</body>
-
+	<footer>Footer</footer>
+</body>
 </html>

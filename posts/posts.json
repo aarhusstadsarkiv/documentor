@@ -1,7 +1,8 @@
 {
-  "layout": "layouts/post.njk",
-  "permalink": "posts/{{ title | slug }}/index.html",
+  "layout": "layouts/procedure.njk",
+  "permalink": "procedures/{{ title | slug }}/index.html",
+  "section": "procedure",
   "tags": [
-    "post"
+    "procedure"
   ]
 }

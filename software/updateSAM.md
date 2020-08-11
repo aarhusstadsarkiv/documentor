@@ -1,7 +1,6 @@
 ---
 title: Opdatér SAM
 summary: Sådan opdateres SAM på adminsitrativ eller frivillig PC
-date: 2020-08-11
 author: CJK
 ---
 

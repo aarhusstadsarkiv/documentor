@@ -1,8 +1,7 @@
 ---
 title: Installér SAM
-date: 2020-08-11
+summary: Procedure for installation af SAM på administrativ eller frivillig PC
 author: CJK
-summary: Procedure for installation af SAM på administrativ eller frivillig PC"
 ---
 
 Der skal bruges SAMs autoinstaller, som bruges af alle klienter hos alle kuratorer (ligger i SAM_v4 og kan recompiles ud fra autoinstaller i sourcecode-mappen)
@@ -10,12 +9,12 @@ Der skal bruges SAMs autoinstaller, som bruges af alle klienter hos alle kurator
 ALLE REFEREREDE DIRS SKAL VÆRE OPRETTET PÅ FORHÅND!
 
 clientSetup.json-filen:
-```
+```json
 {
     # Genereres af os
     "CLIENT_NAME" : "Aarhus Stadsarkiv SAM",
     # Random 64-karakter ascii-streng, som også gemmes i oaws/webapp/csvConfig/accessConfig_v2.json
-    "CLIENT_SECRET" : "h1iBn6mTi7Gae0BxvpC5UBIQUGJLUJPpWGoMxRDyEloNrNJk0wr897CGx5II6lkH",
+    "CLIENT_SECRET" : "Secret string",
     # Må man få amazon-exe og eventuelt flere exe-filer i deployfasen eller ej
     "CLIENT_INCLUDE_DEPLOY_EXECUTABLES" : true,
     

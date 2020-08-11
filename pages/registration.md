@@ -1,12 +1,11 @@
 ---
-layout: layouts/collection.njk
+layout: layouts/section.njk
 title: Registrering
-date: 2020-08-11
 permalink: /registration/index.html
 collection: registration
 eleventyNavigation:
   key: Registrering
-  order: 2
+  order: 3
 ---
 
-Her ligger en række vejledninger til registrering af diverse materialer
+Her ligger en række vejledninger til registrering af både analog og digitalt materiale.

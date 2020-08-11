@@ -19,14 +19,26 @@
 
 <body>
 	<header>
-		<h2><a href="{{ '/' | url }}">{{ metadata.title }}</a></h2>
-		{% include "components/nav.njk" %}
+		<p><a href="{{ '/' | url }}">{{ metadata.title }}</a></p>
+		<nav>
+      {% set navPages = collections.all | eleventyNavigation %}
+      <ul>
+      {%- for entry in navPages %}
+        <li>
+          <a href="{{ entry.url | url }}"{% if entry.url == page.url %} data-current="current item"{% endif %}>{{ entry.title }}</a>
+        </li>
+      {%- endfor %}
+      </ul>
+    </nav>
 	</header>
 
 	<main>
 		{{ layoutContent | safe }}
 	</main>
 
-	<footer>Footer</footer>
+	<footer>
+    Footer
+  </footer>
+
 </body>
 </html>

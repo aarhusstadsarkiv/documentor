@@ -1,5 +1,5 @@
 {
     "layout": "layouts/post.njk",
     "collection": "software",
-    "tags": "software"
+    "tags": ["software", "post"]
   }

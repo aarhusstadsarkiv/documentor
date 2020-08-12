@@ -118,16 +118,16 @@ a[rel="tag"]:last-child {
 }
 
 /* Contact Form */
-form {
+/* form {
   	display: grid;
 	padding: 2em 0;
-}
+} */
 
-form label {
+/* form label {
   	display: none;
-}
+} */
 
-input,
+/* input,
 textarea,
 button {
   	width: 100%;
@@ -135,19 +135,19 @@ button {
   	margin-bottom: 1em;
 	font-size: 1rem;
 	font-family: "Avenir", "Avenir Next", sans-serif;
-}
+} */
 
-input,
+/* input,
 textarea {
 	border: 1px solid black;
-}
+} */
 
-button {
+/* button {
 	border: 1px solid var(--primary);
 	background-color: var(--primary);
 	color: var(--secondary);
 	cursor: pointer;
-}
+} */
 
 @media screen and (min-width:768px) {
 	:root {

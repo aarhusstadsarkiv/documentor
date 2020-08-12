@@ -1,4 +1,5 @@
 {
   "layout": "layouts/post.njk",
-  "tags": "registration"
+  "collection": "registration",
+  "tags": ["registration", "post"]
 }

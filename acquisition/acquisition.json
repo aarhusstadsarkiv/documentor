@@ -1,4 +1,5 @@
 {
     "layout": "layouts/post.njk",
-    "tags": "acquisition"
-  }
+    "collection": "acquisition",
+    "tags": ["acquisition", "post"]
+}

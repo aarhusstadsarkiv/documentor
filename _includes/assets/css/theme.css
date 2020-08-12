@@ -11,13 +11,14 @@ footer {
 
 main {
     margin: 0 auto;
+    width: 100%;
     max-width: 1200px;
 }
 
 @media (min-width: 40em) {
     main {
         display: grid;
-        grid-template-columns: 240px minmax(0,1fr);
+        grid-template-columns: 220px 1fr;
         grid-gap: 1.5em;
     }
 }
@@ -30,6 +31,9 @@ main {
     list-style: none;
 }
 .nav-button {
+    cursor: pointer;
+    padding: .7em;
+    width: 100%;
     background-color: lightgreen;
     color: darkgreen;
 }

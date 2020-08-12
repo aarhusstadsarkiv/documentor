@@ -1,4 +1,5 @@
 {
     "layout": "layouts/post.njk",
+    "collection": "software",
     "tags": "software"
   }

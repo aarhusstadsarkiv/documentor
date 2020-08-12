@@ -3,38 +3,45 @@
 
 <head>
   <meta charset="utf-8">
-  <link rel="dns-prefetch" href="https://identity.netlify.com">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title or renderData.title or metadata.title }}</title>
+  <link rel="dns-prefetch" href="https://identity.netlify.com">
+  <link rel="stylesheet" href="/_includes/assets/css/app.css">
+  <link rel="stylesheet" href="/_includes/assets/css/theme.css">
   <script async src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  {% set css %}
-    {% include "assets/css/app.css" %}
-  {% endset %}
-  <style>{{ css | cssmin | safe }}</style>
-  {% set js %}
-    {% include "assets/js/app.js" %}
-  {% endset %}
-  <script>{{ js | jsmin | safe }}</script>
+  <script async src="/_includes/assets/js/app.js"></script>
 </head>
 
 <body>
 	<header>
-		<p><a href="{{ '/' | url }}">{{ metadata.title }}</a></p>
-		<nav>
-      {% set navPages = collections.all | eleventyNavigation %}
-      <ul>
-      {%- for entry in navPages %}
-        <li>
-          <a href="{{ entry.url | url }}"{% if entry.url == page.url %} data-current="current item"{% endif %}>{{ entry.title }}</a>
-        </li>
-      {%- endfor %}
-      </ul>
-    </nav>
+    <a href="{{ '/' | url }}">{{ metadata.title }}</a>
 	</header>
 
-	<main>
-		{{ layoutContent | safe }}
-	</main>
+	<main class="main">
+      {% macro renderNavListItem(entry) -%}
+        <li class="nav-listitem{% if entry.url == page.url %} current-listitem{% endif %}">
+          <a class="nav-link" href="{{ entry.url | url }}">{{ entry.title }}</a>
+        {%- if entry.children.length -%}
+          <ul class="nav-sublist">
+            {%- for child in entry.children %}{{ renderNavListItem(child) }}{% endfor -%}
+          </ul>
+        {%- endif -%}
+        </li>
+      {%- endmacro %}
+
+      {% set navPages = collections.all | eleventyNavigation %}
+      <nav class="nav" aria-labelledby="nav-label">
+        <span id="nav-label" hidden>Documentors hovednavigation</span>
+        <button type="button" class="nav-button" aria-expanded="false" aria-controls="nav-list">Navigation</button>
+        <ul id="nav-list" class="nav-list">
+          {%- for entry in navPages %}{{ renderNavListItem(entry) }}{%- endfor -%}
+        </ul>
+      </nav>
+
+      <div class="content">
+        {{ layoutContent | safe }}
+      </div>
+  </main>
 
 	<footer>
     Footer

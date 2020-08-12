@@ -2,6 +2,9 @@
 title: Opdatér SAM
 summary: Sådan opdateres SAM på adminsitrativ eller frivillig PC
 author: CJK
+eleventyNavigation:
+  key: Opdatér SAM
+  parent: Software
 ---
 
 Opdatér SAM

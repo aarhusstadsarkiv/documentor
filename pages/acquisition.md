@@ -8,5 +8,5 @@ eleventyNavigation:
   order: 2
 ---
 
-Guides til arkivmodtagelse.
+Guides til arkivmodtagelse. Hver guide skal oprettes i den tilsvarende folder og som markdownfil (indtil videre)
 

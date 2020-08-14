@@ -5,11 +5,14 @@ const htmlmin = require("html-minifier");
 const slugify = require("slugify");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 // My additions
-const searchfilter = require("./_filters/searchfilter").default;
+const searchfilter = require("./_filters/searchfilter");
+const datafilter = require("./_filters/datafilter");
 
 module.exports = function(eleventyConfig) {
-  // My additions
-  eleventyConfig.addFilter("search", searchfilter);
+  // Add nunjuncks-filter "search" and "titles", that filters a collection
+  eleventyConfig.addFilter("searchindex", searchfilter);
+  eleventyConfig.addFilter("dataindex", datafilter);
+
   // Eleventy Navigation https://www.11ty.dev/docs/plugins/navigation/
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
 

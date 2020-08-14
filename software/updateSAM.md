@@ -1,4 +1,5 @@
 ---
+id: 2
 title: Opdatér SAM
 summary: Sådan opdateres SAM på adminsitrativ eller frivillig PC
 author: CJK

@@ -1,8 +1,0 @@
----
-permalink: /index.json
----
-
-{{ collections.post | search | dump | safe }}
-<!-- 
-[{% for post in collections.post %}{"title":"{{post.data.title | escape }}","content":"{{ post.templateContent | striptags(true) | escape}}"}{% if loop.last == false %},{% endif %}{% endfor %}]
--->

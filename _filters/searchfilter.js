@@ -1,21 +1,31 @@
 const lunr = require("lunr");
-// const newLocal = require("lunr-languages/lunr.da")(lunr);
+require("lunr-languages/lunr.stemmer.support")(lunr);
+require("lunr-languages/lunr.da")(lunr);
 
+var strip = function(text) {
+    return text.replace(/(<([^>]+)>)/gi, "");
+}
 module.exports = function(collection) {
-    // what fields we'd like our index to consist of
-    const idx = lunr(function () {
+    const idx = lunr(function() {
         // this.use(lunr.da);
         this.ref('id');
-        this.field('title');
-        this.field('text');
-    });
-
-    collection.forEach( function(post) {
-        idx.add({
-            id: post.url,
-            title: post.data.title,
-            text: post.templateContent
+        this.field('t', {
+            boost: 10
         });
+        this.field('s', {
+            boost: 5
+        });
+        this.field('b');
+        // Lunr 2.x-syntax
+        collection.forEach( function(post) {
+            let stripped = post.templateContent;
+            this.add({
+                id: post.data.id,
+                t: post.data.title,
+                s: post.data.summary,
+                b: stripped
+            })
+        }, this);
     });
     return idx.toJSON();
 };

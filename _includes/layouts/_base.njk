@@ -16,7 +16,7 @@
 <body class="class">
 	<header>
     <a href="{{ '/' | url }}">{{ metadata.title }}</a>
-    <div class="searchform">
+    <form class="searchform">
       <label for="searchfield" hidden>Fuldtekstsøg i alle dokumenter</label>
       <input id="searchfield" type="search" placeholder="Søg i dokumentationen..." autocomplete="off"/>
       <ul id="searchresults">
@@ -24,7 +24,7 @@
         <li class="search-hint">Brug 't:' for at søge i titler</li>
         <li class="search-hint">Brug '*' for at søge efter alle endelser</li>
       </ul>
-    </div>
+    </form>
 	</header>
 
 	<main class="main">

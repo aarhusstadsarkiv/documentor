@@ -12,7 +12,7 @@ header {
     /* display: flex;
     justify-content: space-between; */
     display: grid;
-    grid-template-columns: 14em auto;
+    grid-template-columns: 9em auto;
     
 }
 .searchform {
@@ -34,7 +34,7 @@ header {
     border-radius: 3px;
     width: 15em;
     padding: .6em .7em;
-    transition: width .5s ease;
+    transition: width .4s ease-in-out;
 }
 
 #searchfield:focus {
@@ -43,13 +43,14 @@ header {
 }
 
 #searchfield:focus + #searchresults {
-    display: block;
+    opacity: 1;
 }
 #searchresults {
     position: absolute;
     right: 0;
     z-index: 10000;
-    display: none;;
+    opacity: 0;
+    transition: opacity 250ms ease-in-out 500ms;
     overflow-y: scroll;
     max-height: 500px;
     max-width: 600px;

@@ -1,5 +1,5 @@
 <!doctype html>
-<html {% if section %} data-current="{{ section }}"{% endif %} lang="dk">
+<html class="no-js" {% if section %} data-current="{{ section }}"{% endif %} lang="dk">
 
 <head>
   <meta charset="utf-8">
@@ -9,22 +9,30 @@
   <link rel="stylesheet" href="/_includes/assets/css/app.css">
   <link rel="stylesheet" href="/_includes/assets/css/theme.css">
   <script async src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script src="https://unpkg.com/lunr@2.3.8/lunr.js"></script>
   <script async src="/_includes/assets/js/app.js"></script>
 </head>
 
 <body class="class">
 	<header>
-    <a href="{{ '/' | url }}">{{ metadata.title }}</a>
-    <form class="searchform">
-      <label for="searchfield" hidden>Fuldtekstsøg i alle dokumenter</label>
-      <input id="searchfield" type="search" placeholder="Søg i dokumentationen..." autocomplete="off"/>
-      <ul id="searchresults">
-        <li class="search-hint" id="zero-hits" hidden>Ingen hits</li>
-        <li class="search-hint">Brug 't:' for at søge i titler</li>
-        <li class="search-hint">Brug '*' for at søge efter alle endelser</li>
-      </ul>
+    <a class="logo" href="{{ '/' | url }}">{{ metadata.title }}</a>
+    <form id="searchform" class="searchform" role="search" action="/data.json">
+      <label for="searchfield" class="visually-hidden">Fuldtekstsøg i alle dokumenter</label>
+      <input id="searchfield" name="q" type="search" placeholder="Søg i dokumentationen..." autocomplete="off" autocapitalize="none" aria-describedby="search-hints"/>
+      <button type='submit' class='visually-hidden'>Søg</button>
+      <!-- Dynamically update number of searchresults. Only for SRs and only with js -->
+      <div id="searchresults-number" aria-live="polite" role="status" class="visually-hidden js-only"></div>
+      <div id="searchcontent">
+        <!-- Display search-hints when input-field is focused, but without value -->
+        <ul id="search-hints">
+          <li>Brug feltnavn og kolon foran et søgeord for at søge spedifikt i det navngivne felt, eks. titel:bil</li>
+          <li>Brug '*' for at søge efter alle endelser af et ord, eks. bil*</li>
+        </ul>
+        <!-- Display searchresults when input-field is focused and with value -->
+        <ul id="searchresults" class="js-only" role="listbox"></ul>
+      </div>
     </form>
+    <button class="menu" type="button">Menu</button>
 	</header>
 
 	<main class="main">

@@ -10,58 +10,75 @@ if (window.netlifyIdentity) {
 
 document.addEventListener('DOMContentLoaded', function() {
 
+  document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
   // Fetch and show searchresults
   (function(window, document) {
     "use strict";
   
     const search = e => {
-      const displayEl = document.getElementById("searchresults");
-      // if clearing any input, show hints and remove results
-      if (!e.target.value) {
-        displayEl.querySelectorAll('.searchresult').forEach( function(el) { el.remove() });
-        displayEl.querySelectorAll('.search-hint').forEach( function(el) { el.removeAttribute("hidden") });
-        displayEl.querySelector("#zero-hits").setAttribute("hidden", true);
+      const searchform = document.querySelector("#searchform");
+      const searchresults = searchform.querySelector('#searchresults');
+      const searchHints = searchform.querySelector('#search-hints');
+      const value = e.target.value.trim();
+      // empty searchresults no matter what
+      searchresults.innerHTML = "";
+
+      // if only whitespace or clearing any input, show hints and remove results
+      if (value.length < 2) {
+        searchHints.style.display = "block";
 
       // else search for results
       } else {
-        const results = window.searchIndex.search(e.target.value);
-        // Results or not, remove any previous .searchresults
-        displayEl.querySelectorAll('.searchresult').forEach( function(el) { el.remove() });
-        // if results, remove hide search-hints and add searchresults
+        const results = window.searchIndex.search(value);
         if (results && results.length > 0) {
-          // if results, remove and hints, incl. zero-hits notification
-          displayEl.querySelectorAll('.search-hint').forEach( function(el) { el.setAttribute("hidden", true) });
-          results.forEach(function(res) {
+          results.forEach(function(res, idx) {
             const data = window.dataIndex[res.ref];
-
             const el = document.createElement("li");
             el.setAttribute("class", "searchresult");
-            displayEl.appendChild(el);
+            el.setAttribute("tabindex", "-1");
+            el.setAttribute("role", "option");
+            el.setAttribute("aria-selected", "false");
+            el.setAttribute("id", "autocomplete_" + idx.toString());
+            searchresults.appendChild(el);
 
             const a = document.createElement("a");
             a.setAttribute("href", data.url);
             a.textContent = data.title;
             el.appendChild(a);
           });
-        // if no results, show search-hints
         } else {
-          displayEl.querySelector("#zero-hits").setAttribute("hidden", true);
-          displayEl.querySelectorAll('.search-hint').forEach( function(el) { el.removeAttribute("hidden") });
+          searchresults.innerHTML = "<li>Ingen resultater</li>"
         }
+        searchHints.style.display = "none";
+        searchresults.style.display = "block";
+
       }
     };
     fetch("/index.json").then(response =>
       response.json().then(rawIndex => {
         window.searchIndex = lunr.Index.load(rawIndex);
+        console.log("fetched index");
         document.getElementById("searchfield").addEventListener("input", search);
       })
     );
     fetch("/data.json").then(response =>
       response.json().then(rawIndex => {
         window.dataIndex = rawIndex;
+        console.log("fetched data");
       })
     );
   })(window, document);
+
+  // works, but only on html-pages
+  // if (window.location.pathname === "/data.json") {
+  //   const query = new URLSearchParams(window.location.search);
+  //   console.log(query.get("q"));
+  // }
+
+  // Enhance searchfield
+  document.querySelector("#searchfield").setAttribute("aria-owns", "searchresults");
+  document.querySelector("#searchfield").setAttribute("aria-autocomplete", "list");
+  document.querySelector("#searchfield").setAttribute("aria-expanded", "false");
 
   // Show or hide navigation
   document.querySelectorAll('.nav-button').forEach( function(item) {
